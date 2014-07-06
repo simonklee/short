@@ -1,0 +1,10 @@
+package short implements a bijective function to convert base₁₀ → base₆₂ and vice versa.
+
+### Example
+
+
+    b := short.Encode(125)
+    // b is cb
+
+    n := short.Decode(b)
+    // n is 125
