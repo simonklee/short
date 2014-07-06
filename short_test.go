@@ -3,14 +3,14 @@ package short
 import "testing"
 
 var (
-	bufThousand   = Encode(1000)
-	bufMillion    = Encode(1000000)
-	buf10Million  = Encode(10000000)
-	buf100Million = Encode(100000000)
+	bufThousand   = Encode(1e3)
+	bufMillion    = Encode(1e6)
+	buf10Million  = Encode(1e7)
+	buf100Million = Encode(1e8)
 )
 
 func TestEncodeDecode(t *testing.T) {
-	for i := 0; i < 10000; i++ {
+	for i := 0; i < 1e4; i++ {
 		got := Decode(Encode(i))
 		if got != i {
 			t.Fatalf("exp %d got %d", i, got)
@@ -20,25 +20,25 @@ func TestEncodeDecode(t *testing.T) {
 
 func BenchmarkEncodeThousand(b *testing.B) {
 	for i := 0; i < b.N; i++ {
-		Encode(1000)
+		Encode(1e3)
 	}
 }
 
 func BenchmarkEncodeMillion(b *testing.B) {
 	for i := 0; i < b.N; i++ {
-		Encode(1000000)
+		Encode(1e6)
 	}
 }
 
 func BenchmarkEncode10Million(b *testing.B) {
 	for i := 0; i < b.N; i++ {
-		Encode(10000000)
+		Encode(1e7)
 	}
 }
 
 func BenchmarkEncode100Million(b *testing.B) {
 	for i := 0; i < b.N; i++ {
-		Encode(100000000)
+		Encode(1e8)
 	}
 }
 
